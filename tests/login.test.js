@@ -44,23 +44,24 @@ describe("Testing POST /login", function () {
                 }
             })
     })
-    // it("should return with status code 400, Wrong Email", function (done) {
-    //     //setup 
-    //     const body = {
-    //         email: 'luthfiz@mail.com',
-    //         password: 'luthfi123'
-    //     }
-    //     //execute
-    //     request(app)
-    //         .post('/login')
-    //         .send(body)
-    //         .end(function (err, res) {
-    //             if (err) {
-    //                 done(err)
-    //             } else {
-    //                 expect(res.statusCode).toEqual(400)
-    //                 done()
-    //             }
-    //         })
-    // })
+    it("should return with status code 400, Wrong Email", function (done) {
+        //setup 
+        const user = {
+            email: 'luthfiz@mail.com',
+            password: 'luthfi123'
+        }
+        //execute
+        request(app)
+            .post('/login')
+            .send(user)
+            .end(function (err, res) {
+                if (err) {
+                    done(err)
+                } else {
+                    expect(res.statusCode).toEqual(404)
+                    expect(typeof res.body).toEqual("object")
+                    done()
+                }
+            })
+    })
 })

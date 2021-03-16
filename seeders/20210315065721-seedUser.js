@@ -12,14 +12,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Users', [{
-      name: 'Luthfi',
-      email: 'luthfi@mail.com',
-      password: hashPassword('luthfi123'),
-      role: 'admin',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }], {})
+    await queryInterface.bulkInsert('Users', [
+      {
+        name: 'Luthfi',
+        email: 'luthfi@mail.com',
+        password: hashPassword('luthfi123'),
+        role: 'admin',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'customer',
+        email: 'customer@mail.com',
+        password: hashPassword('customer'),
+        role: 'customer',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ], {})
   },
 
   down: async (queryInterface, Sequelize) => {

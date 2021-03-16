@@ -12,6 +12,8 @@
     "db:seed:undo:test": "set NODE_ENV=test&& npx sequelize db:seed:undo:all",
     "db:create:development": "set NODE_ENV=development&& npx sequelize db:create",
     "db:migrate:development": "set NODE_ENV=development&& npx sequelize db:migrate",
+    "db:seed:development": "set NODE_ENV=development&& npx sequelize db:seed:all",
+    "db:seed:undo:development": "set NODE_ENV=development&& npx sequelize db:seed:undo:all",
     "test": "set NODE_ENV=test&& npx jest --detectOpenHandles --forceExit --runInBand",
     "dev": "set NODE_ENV=development&& npx nodemon bin/http.js"
   },
