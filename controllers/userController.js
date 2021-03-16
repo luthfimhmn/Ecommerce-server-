@@ -18,6 +18,8 @@ class UserController {
                         } else {
                             next({ name: 'invalidemailorpass' })
                         }
+                    } else {
+                        next({name:'invalidemailorpass'})
                     }
                 })
                 .catch((err) => {

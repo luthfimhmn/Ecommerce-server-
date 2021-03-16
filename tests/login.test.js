@@ -58,10 +58,31 @@ describe("Testing POST /login", function () {
                 if (err) {
                     done(err)
                 } else {
-                    expect(res.statusCode).toEqual(404)
+                    expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual("object")
                     done()
                 }
             })
+    })
+    it("should return with status code 400, No Email and Password",function(done){
+        //setup
+        const user ={
+            email : '',
+            password: ''
+        }
+        //execute
+        request(app)
+            .post('/login')
+            .send(user)
+            .end((err,res)=>{
+                if(err){
+                    done(err)
+                } else {
+                    expect(res.statusCode).toEqual(400)
+                    expect(typeof res.body).toEqual("object")
+                    done()
+                }
+            })
+
     })
 })

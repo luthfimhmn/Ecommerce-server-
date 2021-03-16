@@ -38,10 +38,34 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: 'Price is required'
+        },
+        isNumeric: {
+          args: true,
+          msg: 'price must in number'
+        },
+        min: {
+          args: [0],
+          msg: 'Price minimum is 0'
         }
       }
     },
-    stock: DataTypes.INTEGER
+    stock: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Stock is required'
+        },
+        min: {
+          args: [0],
+          msg: 'Stock minimum is 0'
+        },
+        isNumeric: {
+          args: true,
+          msg: 'Stock must in number'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Product',
