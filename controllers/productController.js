@@ -51,6 +51,17 @@ class ProductController {
                 next(err)
             });
     }
+
+    static getProductById(req,res,next) {
+        let id = +req.params.id
+        Product.findByPk(id)
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                next({name: 'NotFound'})
+            })
+    }
 }
 
 module.exports = ProductController
