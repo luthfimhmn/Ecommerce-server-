@@ -14,7 +14,7 @@ class UserController {
                         if (comparedPassword) {
                             //Generate JWT
                             const access_token = generateToken({ id: user.id, email: user.email })
-                            res.status(200).json({ access_token })
+                            res.status(200).json({ access_token, name:user.name, role:user.role})
                         } else {
                             next({ name: 'invalidemailorpass' })
                         }
