@@ -22,15 +22,23 @@ class ProductController {
     }
 
     static updateProduct(req, res, next) {
-        let id = +req.params.id
-        let { name, image_url, price, stock } = req.body
-        Product.update({ name, image_url, price, stock }, { where: { id } })
-            .then((result) => {
-                res.status(200).json(result)
-            })
-            .catch((err) => {
-                next(err)
-            });
+        try {
+            let id = +req.params.id
+            let { name, image_url, price, stock } = req.body
+            Product.update({ name, image_url, price, stock }, { where: { id } })
+                .then((result) => {
+                    if(result){
+                        res.status(200).json(result)
+                    } else {
+                        next({name: "failedupdate", err})
+                    }
+                })
+                .catch((err) => {
+                    next({name: "failedupdate", err})
+                });
+        } catch (error) {
+            next({name: "failedupdate", err: error})
+        }
     }
 
     static deleteProduct(req, res, next) {

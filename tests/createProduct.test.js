@@ -4,7 +4,7 @@ const deleteProducts = require('../helpers/delete-products')
 
 
 describe("Testing POST /products", function () {
-    afterAll(function(){
+    afterAll(function(done){
         //delete data
         deleteProducts()
             .then(()=> done())

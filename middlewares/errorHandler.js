@@ -12,8 +12,9 @@ const errorHandler = (err, req, res, next) => {
         res.status(400).json({ message: 'Invalid Email or Password' })
     } else if (err.name === 'NotAdmin') {
         res.status(400).json({ message: `You're not admin` })
-    }
-    else {
+    } else if (err.name === 'failedupdate'){
+        res.status(400).json({message: 'Fail update', err: err.err})
+    } else {
         res.status(500).json({ message: 'Internal Server Error' })
     }
 }
