@@ -20,8 +20,12 @@ describe("Testing POST /products", function () {
                     password: 'luthfi123'
                 })
                 .end((err, res) => {
-                    access_token_user = res.body.access_token
-                    done()
+                    if(err){
+                        done(err)
+                    } else {
+                        access_token_user = res.body.access_token
+                        done()
+                    }
                 })
         })
         it("should return response with status code 201", function (done) {

@@ -303,7 +303,7 @@ describe("Testing PUT /products, minus stock,price,invalid format", () => {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual("object")
-                    // expect(res.body.details).toEqual(expect.arrayContaining(['Stock must in number']))
+                    console.log(res.body)
                     done()
                 }
             })
