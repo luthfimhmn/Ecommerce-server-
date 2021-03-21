@@ -17,7 +17,8 @@
     "db:seed:development": "set NODE_ENV=development&& npx sequelize db:seed:all",
     "db:seed:undo:development": "set NODE_ENV=development&& npx sequelize db:seed:undo:all",
     "test": "set NODE_ENV=test&& npx jest --detectOpenHandles --forceExit --runInBand",
-    "dev": "set NODE_ENV=development&& npx nodemon bin/http.js"
+    "dev": "set NODE_ENV=development&& npx nodemon bin/http.js",
+    "start": "node bin/http.js"
   },
   "repository": {
     "type": "git",
