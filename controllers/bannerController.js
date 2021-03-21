@@ -27,7 +27,7 @@ class BannerController {
         let id = req.params.id
         Banner.findByPk(id)
             .then(banner => {
-                res.status(200).json(data)
+                res.status(200).json(banner)
             })
             .catch(err => {
                 next({name: 'NotFound'})
@@ -38,7 +38,7 @@ class BannerController {
         try {
             let id = req.params.id
             let {title, status, image_url} = req.body
-            Banner.update({title, status, image_url})
+            Banner.update({title, status, image_url}, { where: { id } })
                 .then(result => {
                     if(result) {
                         res.status(200).json(result)

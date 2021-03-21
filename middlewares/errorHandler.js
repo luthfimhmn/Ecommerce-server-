@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-    if (err.name === 'SequelizeValidationError') {
+    if (err.name === 'SequelizeValidationError' || err.name === 'SequelizeUniqueConstraintError') {
         let errors = []
         err.errors.forEach(el => {
             errors.push(el.message)
@@ -13,7 +13,7 @@ const errorHandler = (err, req, res, next) => {
     } else if (err.name === 'NotAdmin') {
         res.status(400).json({ message: `You're not admin` })
     } else if (err.name === 'failedupdate'){
-        res.status(400).json({message: 'Fail update', detail: err.err.errors[0].message})
+        res.status(400).json({message: 'Fail update' })
     } else {
         res.status(500).json({ message: 'Internal Server Error' })
     }
