@@ -28,7 +28,20 @@ class UserController {
         } catch (error) {
             next(error)
         }
+    }
 
+    static register (req,res,next) {
+        User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        })
+            .then((user) => {
+                res.status(201).json({id: user.id, email: user.email, role: user.role})
+            })
+            .catch((err) => {
+                next(err)
+            });
     }
 }
 

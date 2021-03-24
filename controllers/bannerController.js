@@ -14,7 +14,7 @@ class BannerController {
     }
 
     static getAllBanner(req,res,next) {
-        Banner.findAll()
+        Banner.findAll({where: {status: 'active'}})
             .then((banners) => {
                 res.status(200).json(banners)
             })
