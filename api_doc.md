@@ -438,3 +438,156 @@ Delete Banner
       "message": "Internal Server Error"
     }
   ```
+
+### GET Cart
+
+Read All Cart
+
+- ***URL***
+  ```
+    /cart
+  ```
+
+
+- ***Method***
+  ```
+    GET
+  ```
+
+- ***Request Header***
+  ```
+    {
+      "access_token": "<your access token>"
+    }
+  ```
+
+
+- ***Request Body***
+  ```
+    Not needed
+  ```
+
+- ***Success Response***
+  ```
+  [
+    {
+        "id": 1,
+        "UserId": 1,
+        "ProductId": 1,
+        "quantity": 1,
+        "totalPrice": null,
+        "wishList": null,
+        "createdAt": "2021-03-25T04:51:06.468Z",
+        "updatedAt": "2021-03-25T04:51:06.468Z",
+        "Product": {
+            "id": 1,
+            "name": "Puma Shoes",
+            "image_url": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/369725/01/sv01/fnd/EEA/fmt/png/PUMA-Vikky-v2-Women's-Trainers",
+            "price": 400000,
+            "stock": 3,
+            "createdAt": "2021-03-25T04:35:11.178Z",
+            "updatedAt": "2021-03-25T04:35:11.178Z"
+        }
+    }
+  ]
+  ```
+
+- ***Error Response***
+  ```
+    {
+      "message": "Internal Server Error"
+    }
+  ```
+
+
+### POST Cart
+
+Create new Cart
+
+- ***URL***
+  ```
+    /cart/:prodId
+  ```
+
+
+- ***Method***
+  ```
+    POST
+  ```
+
+- ***Request Header***
+  ```
+    {
+      "access_token": "<your access token>"
+    }
+  ```
+
+
+- ***Request Body***
+  ```
+  Not Needed
+
+  ```
+
+- ***Success Response***
+  ```
+  {
+    "id": 1,
+    "ProductId": 1,
+    "UserId": 1,
+    "quantity": 1,
+    "updatedAt": "2021-03-25T04:51:06.468Z",
+    "createdAt": "2021-03-25T04:51:06.468Z",
+    "totalPrice": null,
+    "wishList": null
+  }
+  ```
+
+- ***Error Response***
+  ```
+    {
+      "message": "Internal Server Error"
+    }
+  ```
+
+### DELETE Cart
+
+Delete Cart
+
+- ***URL***
+  ```
+    /cart/:id
+  ```
+
+
+- ***Method***
+  ```
+    DELETE
+  ```
+
+- ***Request Header***
+  ```
+    {
+      "access_token": "<your access token>"
+    }
+  ```
+
+
+- ***Request Body***
+  ```
+    Not Needed
+  ```
+
+- ***Success Response***
+  ```
+    {
+      "message": "Remove from cart Success"
+    }
+  ```
+
+- ***Error Response***
+  ```
+    {
+      "message": "Internal Server Error"
+    }
+  ```
