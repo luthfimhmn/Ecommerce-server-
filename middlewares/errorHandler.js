@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
             errors.push(el.message)
         });
         res.status(400).json({
-            message: err.message,
+            message: 'Validation Error',
             details: errors
         })
     } else if (err.name === 'invalidemailorpass') {
@@ -14,6 +14,10 @@ const errorHandler = (err, req, res, next) => {
         res.status(400).json({ message: `You're not admin` })
     } else if (err.name === 'failedupdate'){
         res.status(400).json({message: 'Fail update' })
+    } else if (err.name === 'moreThanStock') {
+        res.status(400).json({ message: 'You cant add more product'})
+    } else if (err.name === 'stockIs0') {
+        res.status(400).json({ message: 'You cant subtract more product'})
     } else {
         res.status(500).json({ message: 'Internal Server Error' })
     }

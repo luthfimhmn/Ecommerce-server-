@@ -31,7 +31,7 @@ class CartController {
           if (cart[0].Product.stock > cart[0].quantity){
             return Cart.update({ quantity: cart[0].quantity + 1}, { where: { id: cart[0].id }, returning: true })
           } else {
-            next(err)
+            next({name: 'moreThanStock'})
           }
         }
       })
@@ -55,7 +55,7 @@ class CartController {
         if (cart.quantity > 0) {
           return Cart.update({ quantity: cart.quantity - 1}, {where: {id: cart.id}, returning: true})
         } else {
-          next(err)
+          next({name: 'stockIs0'})
         }
       })
       .then(cart => {
