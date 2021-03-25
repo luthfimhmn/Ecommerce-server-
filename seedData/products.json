@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Puma Shoes",
+    "image_url": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/369725/01/sv01/fnd/EEA/fmt/png/PUMA-Vikky-v2-Women's-Trainers",
+    "price": 300000,
+    "stock": 3
+  },
+  {
+    "name": "Nike Shoes",
+    "image_url": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/pmjcu1jclonzphlnv3jz/air-max-impact-basketball-shoe-98c6zd.jpg",
+    "price": 400000,
+    "stock": 3
+  },
+  {
+    "name": "DC Shoes",
+    "image_url": "https://media.dcshoes.co.id/media/catalog/product/cache/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/a/d/adys300172_dc_mens_trase_sd_shoe_xkrs_1_h_ID.jpg",
+    "price": 350000,
+    "stock": 3
+  }
+]

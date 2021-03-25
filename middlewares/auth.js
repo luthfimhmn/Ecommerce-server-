@@ -26,8 +26,7 @@ const authorize = (req, res, next) => {
 }
 
 const authorizeUser = (req,res,next) => {
-    let productId = req.params.id
-    Cart.findOne({where: {}})
+    Cart.findOne({where: { id: req.params.id}})
         .then((result) => {
             if(result) {
                 if(result.UserId === req.user.id) {

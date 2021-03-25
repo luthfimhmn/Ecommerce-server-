@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Puma Shoes",
+    "status": "active",
+    "image_url": "https://www.top-sport.hr/wp-content/uploads/2017/01/20SS_xSP_Core_X-Ray-Black_Model_0112_Combined_RGB_1920x550-PUMA-BANNER.jpg"
+  },
+  {
+    "title": "Nike Shoes",
+    "status": "active",
+    "image_url": "https://www.footasylum.com/images/articles/LP/Homepage/Q4/Homepage-Banner-AF1React-170120.jpg"
+  },
+  {
+    "title": "DC Shoes",
+    "status": "active",
+    "image_url": "https://i.snbz.cz/blog/dc_banner_jaro2016_aj.jpg"
+  }
+]

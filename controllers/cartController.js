@@ -43,27 +43,28 @@ class CartController {
       });
   }
 
-  // static subtractCart (req,res,next) {
-  //   Cart.findOne({
-  //     where: {
-  //       ProductId: req.params.prodId,
-  //       UserId: req.user.id
-  //     }
-  //   })
-  //     .then(cart => {
-  //       if (cart.quantity > 0) {
-  //         return Cart.update({ quantity: cart.quantity - 1}, {where: { id: cart.id}, returning: true})
-  //       } else {
-  //         next(err)
-  //       }
-  //     })
-  //     .then(cart => {
-  //       console.log(cart)
-  //     })
-  //     .catch(err => {
-  //       next(err)
-  //     })
-  // }
+  static subtractCart (req,res,next) {
+    Cart.findOne({
+      where: {
+        ProductId: req.params.prodId,
+        UserId: req.user.id
+      },
+      include: [{model: Product}]
+    })
+      .then(cart => {
+        if (cart.quantity > 0) {
+          return Cart.update({ quantity: cart.quantity - 1}, {where: {id: cart.id}, returning: true})
+        } else {
+          next(err)
+        }
+      })
+      .then(cart => {
+        res.status(200).json(cart)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
 
   static removeFromCart (req,res,next) {
     Cart.destroy({ where: { id: req.params.id }})
