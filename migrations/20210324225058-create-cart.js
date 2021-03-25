@@ -8,14 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ProductId: {
+      UserId: {
         type: Sequelize.INTEGER
       },
-      UserId: {
+      ProductId: {
         type: Sequelize.INTEGER
       },
       quantity: {
         type: Sequelize.INTEGER
+      },
+      totalPrice: {
+        type: Sequelize.INTEGER
+      },
+      wishList: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

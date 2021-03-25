@@ -14,8 +14,10 @@ class CartController {
   static addToCart (req,res,next) {
     Cart.findOrCreate({
       where: {
-        ProductId: req.params.prodId
+        ProductId: req.params.prodId,
+        UserId: req.user.id
       },
+      include: [{ model: Product }],
       defaults: {
         ProductId: req.params.prodId,
         UserId: req.user.id,
@@ -23,23 +25,45 @@ class CartController {
       }
     })
       .then((cart) => {
-        console.log(cart[0].isNewRecord, 'INI HASIl');
-        if (cart[0].isNewRecord === true) {
-          Product.update({ stock: stock-1 }, {where: {id: req.params.prodId}, fields: ['stock'], returning: true})
-            .then(product => {
-              res.status(201).json(cart[0])
-            })
-            .catch(err => {
-              next(err)
-            })
+        if (cart[1] === true) {
+          res.status(201).json(cart[0])
         } else {
-          res.status(200).json(cart[0])
+          if (cart[0].Product.stock > cart[0].quantity){
+            return Cart.update({ quantity: cart[0].quantity + 1}, { where: { id: cart[0].id }, returning: true })
+          } else {
+            next(err)
+          }
         }
+      })
+      .then((cart) => {
+        res.status(200).json(cart)
       })
       .catch((err) => {
         next(err)
       });
   }
+
+  // static subtractCart (req,res,next) {
+  //   Cart.findOne({
+  //     where: {
+  //       ProductId: req.params.prodId,
+  //       UserId: req.user.id
+  //     }
+  //   })
+  //     .then(cart => {
+  //       if (cart.quantity > 0) {
+  //         return Cart.update({ quantity: cart.quantity - 1}, {where: { id: cart.id}, returning: true})
+  //       } else {
+  //         next(err)
+  //       }
+  //     })
+  //     .then(cart => {
+  //       console.log(cart)
+  //     })
+  //     .catch(err => {
+  //       next(err)
+  //     })
+  // }
 
   static removeFromCart (req,res,next) {
     Cart.destroy({ where: { id: req.params.id }})
