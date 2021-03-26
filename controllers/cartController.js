@@ -46,8 +46,7 @@ class CartController {
   static subtractCart (req,res,next) {
     Cart.findOne({
       where: {
-        ProductId: req.params.prodId,
-        UserId: req.user.id
+        id : req.params.id
       },
       include: [{model: Product}]
     })
