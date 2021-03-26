@@ -43,6 +43,28 @@ class CartController {
       });
   }
 
+  static addQuantityProductToCart (req,res,next) {
+    Cart.findOne({
+      where: {
+        id:req.params.id
+      },
+      include: [{model: Product}]
+    })
+      .then(cart => {
+        if (cart.Product.stock > cart.quantity) {
+          return Cart.update({ quantity: cart.quantity + 1}, {where: {id: cart.id}, returning: true})
+        } else {
+          next({name: 'moreThanStock'})
+        }
+      })
+      .then(cart => {
+        res.status(200).json(cart)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+
   static subtractCart (req,res,next) {
     Cart.findOne({
       where: {
