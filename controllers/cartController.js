@@ -2,7 +2,7 @@ const { Cart, Product } = require('../models');
 
 class CartController {
   static getCart (req,res,next) {
-    Cart.findAll({where: {UserId: req.user.id}, include: [{ model: Product }], order: [['id','DESC']] })
+    Cart.findAll({where: {UserId: req.user.id}, include: [{ model: Product }], order: [['id', 'DESC']] })
       .then(cart => {
         res.status(200).json(cart)
       })
