@@ -591,3 +591,111 @@ Delete Cart
       "message": "Internal Server Error"
     }
   ```
+
+  ### PATCH min Cart
+
+Subtract Quantity Cart
+
+- ***URL***
+  ```
+    /cart/min/:id
+  ```
+
+
+- ***Method***
+  ```
+    PATCH
+  ```
+
+- ***Request Header***
+  ```
+    {
+      "access_token": "<your access token>"
+    }
+  ```
+
+
+- ***Request Body***
+  ```
+    Not Needed
+  ```
+
+- ***Success Response***
+  ```
+    [
+      1,
+      [
+          {
+              "id": 7,
+              "UserId": 1,
+              "ProductId": 1,
+              "quantity": 1,
+              "totalPrice": null,
+              "wishList": null,
+              "createdAt": "2021-03-26T01:21:48.396Z",
+              "updatedAt": "2021-03-26T02:27:46.632Z"
+          }
+      ]
+    ]
+  ```
+
+- ***Error Response***
+  ```
+    {
+      "message": "Internal Server Error"
+    }
+  ```
+
+  ### PATCH plus Cart
+
+Add Quantity Cart
+
+- ***URL***
+  ```
+    /cart/plus/:id
+  ```
+
+
+- ***Method***
+  ```
+    PATCH
+  ```
+
+- ***Request Header***
+  ```
+    {
+      "access_token": "<your access token>"
+    }
+  ```
+
+
+- ***Request Body***
+  ```
+    Not Needed
+  ```
+
+- ***Success Response***
+  ```
+    [
+      1,
+      [
+          {
+              "id": 7,
+              "UserId": 1,
+              "ProductId": 1,
+              "quantity": 2,
+              "totalPrice": null,
+              "wishList": null,
+              "createdAt": "2021-03-26T01:21:48.396Z",
+              "updatedAt": "2021-03-26T02:28:33.258Z"
+          }
+      ]
+    ]
+  ```
+
+- ***Error Response***
+  ```
+    {
+      "message": "Internal Server Error"
+    }
+  ```
